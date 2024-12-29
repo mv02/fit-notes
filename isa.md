@@ -54,7 +54,7 @@
 - L2 rámec obsahuje typ protokolu (_Type_) – `0x0800` (IP), `0x86DD` (IPv6)
 - Dvě verze Ethernet rámců: Ethernet II (DIX) – _Type_, IEEE 802.3 – _Length_
 
-![Ethernet hlavička (isa/L2)](ethernet-header.png)
+![Ethernet hlavička](isa/ethernet-header.png)
 
 - L2 adresa pro broadcast – `ff:ff:ff:ff:ff:ff`
 - L2 adresy pro multicast IPv4 – `01:00:5e:__:__:__`
@@ -69,7 +69,7 @@
 - Obsah IP datagramu určuje hodnota pole _Protocol_/_Next Header_
 - IPv4 a IPv6 fungují v systému jako dva oddělené TCP/IP stacky
 
-![IPv4/IPv6 hlavička (isa/L3)](ip-headers.png)
+![IPv4/IPv6 hlavička](isa/ip-headers.png)
 
 ##### Adresování IPv4 s využitím tříd (_classful_)
 
@@ -102,7 +102,7 @@
   - Systémové (0–1023), uživatelské (1024–49151), dynamické (49152–65535)
 - Spojované (TCP) a nespojované (UDP) služby
 
-![TCP/UDP hlavička (isa/L4)](tcp-udp-headers.png)
+![TCP/UDP hlavička](isa/tcp-udp-headers.png)
 
 #### Aplikační vrstva
 
