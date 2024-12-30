@@ -1383,3 +1383,58 @@ TODO: streaming
 
 - Rozšíření o priority u diferenciovaných služeb
 - Pravděpodobnost zahození závisí na _IP Precedence_ či _DSCP_
+
+## Synchronizace času, logování událostí (přednáška 12)
+
+### Network Time Protocol (NTP)
+
+- Používá se pro synchronizaci času mezi všemi zařízeními v síti
+- Aplikační protokol nad UDP, port 123
+- Hierarchie serverů:
+  - Stratum 0 – referenční hodiny, např. atomové
+  - Stratum 1 – NTP server synchronizovaný pár mikrosekund od stratum 0
+  - Stratum N – NTP server synchronizovaný s NTP server stratum N-1
+- Používá čtyři časové značky:
+  - T1 – čas odeslání požadavku klientem
+  - T2 – čas přijetí požadavku serverem
+  - T3 – čas odeslání odpovědi serverem
+  - T4 – čas přijetí odpovědi klientem
+- Pomocí časových značek klient odhaduje zpoždění a rozdíl
+
+### Syslog
+
+- Protokol sloužící k logování událostí
+- Aplikační protokol nad UDP, port 514
+- Logy se posílají v plain textu, mohou být ukládány lokálně nebo posílány do jiné destinace
+- Často používán jako jednotný logovací mechanismus pro aplikace
+
+### Priority Syslog zpráv
+
+| Syslog severity | Level |
+| --------------- | ----- |
+| Emergency       | 0     |
+| Alert           | 1     |
+| Critical        | 2     |
+| Error           | 3     |
+| Warning         | 4     |
+| Notice          | 5     |
+| Info            | 6     |
+| Debug           | 7     |
+
+### Formát Syslog zprávy
+
+- _Facility_ – zdroj zprávy
+- _Severity_ – číslice priority
+- _Mnemonic_ – kód jednoznačně identifikující chybovou zprávu, ne vždy přítomen
+- _Message-text_ – text popisující situaci
+
+![Příklad Syslog zprávy](isa/syslog-format.png)
+
+- Formát textové části závisí na aplikaci – složitá analýza a automatické zpracování
+
+### Přenos souborů
+
+- Konfigurace, záloha a upload firmwaru
+- TFTP (_Trivial File Transfer Protocol_)
+- FTP (_File Transfer Protocol_), SFTP (_SSH FTP_, _Secure FTP_) – robustnější a bezpečnější
+- HTTP, REST API
