@@ -1264,7 +1264,8 @@ TODO: streaming
 - Počet toků se dynamicky mění
 - Cyklická obsluha všech front – stejný objem přenesených dat
 - Rychlost obsluhy fronty: $\frac{R}{N}$
-- Maximální zpoždění: $\frac{L}{R/N} = \frac{LN}{R}$
+  - $N$ – počet front
+- Maximální zpoždění: $\frac{LN - 1}{R}$
 
 ![Cyklická fronta](isa/qos-rr.png)
 
@@ -1273,6 +1274,11 @@ TODO: streaming
 - Pro každý tok se vytváří jedna fronta – dynamický vznik a zánik
 - Váha se určuje na základě položky _IP Precedence_ (pole _ToS_ v IP hlavičce)
 - Váha určuje počet odebraných paketů/bytů z fronty
+- Rychlost obsluhy fronty: $W_i \cdot \frac{R}{W}$
+  - $W_i$ – váha fronty $i$
+  - $W$ – součet vah
+- Maximální zpoždění:
+  $$\frac{L}{W_1 \cdot \frac{R}{W}} + \frac{L}{W_2 \cdot \frac{R}{W}} + \dots + \frac{L - 1}{W_N \cdot \frac{R}{W}}$$
 
 ![Váhová fronta](isa/qos-wfq.png)
 
